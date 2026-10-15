@@ -1,0 +1,26 @@
+[16:21:53] === Device ===
+[16:21:53] model=sdk_gphone64_x86_64 sdk=36 type=userdebug
+[16:21:54] app:  versionCode=2 minSdk=28 targetSdk=36
+[16:21:54] magisk -v: 30.6:MAGISK:R / su -c id: uid=0(root) gid=0(root) groups=0(root) context=u:r:magisk:s0
+[16:21:54] === 1. Rooted, O11 app NOT on DenyList ===
+[16:21:55] denylist rm: Target does not exist in denylist
+[16:21:55] denylist ls: [com.rotomroot.example|com.rotomroot.example ]
+[16:21:57] launched at 16:21:56
+[16:22:15] app screen: Rooted · 16:22:08|su binary (strong)|Yes|which su (strong)|Yes|Root apps (strong)|Yes|RW system (strong)|No|Magisk / KSU (strong)|Yes|Test keys (weak)|No|Debug build (weak)|Yes|Busybox (weak)|No|
+[16:22:17] screenshot -> 01-o11-rooted-detected.png
+[16:22:17] === 2. Rooted, Zygisk + DenyList on the O11 app ===
+[16:22:18] denylist add: 
+[16:22:18] denylist ls: [com.rotomroot.example|com.rotomroot.example net.osacademy.dev.RotomRootSample|net.osacademy.dev.RotomRootSample ]
+[16:22:20] launched at 16:22:19
+[16:22:34] app screen: Rooted · 16:22:29|su binary (strong)|No|which su (strong)|No|Root apps (strong)|Yes|RW system (strong)|No|Magisk / KSU (strong)|No|Test keys (weak)|No|Debug build (weak)|Yes|Busybox (weak)|No|
+[16:22:37] screenshot -> 02-o11-denylist-rootapps-only.png
+[16:22:37] === 3. Rooted, DenyList + Magisk app removed (simulates 'Hide the Magisk app') ===
+[16:22:37] pm uninstall com.topjohnwu.magisk: Success
+[16:22:40] launched at 16:22:38
+[16:22:57] app screen: Not rooted · 16:22:54|su binary (strong)|No|which su (strong)|No|Root apps (strong)|No|RW system (strong)|No|Magisk / KSU (strong)|No|Test keys (weak)|No|Debug build (weak)|Yes|Busybox (weak)|No|
+[16:23:00] screenshot -> 03-o11-denylist-hidden-bypassed.png
+[16:23:00] still rooted? magisk -v: 30.6:MAGISK:R / su -c id: uid=0(root) gid=0(root) groups=0(root) context=u:r:magisk:s0
+[16:23:00] === Restore ===
+[16:23:01] install Magisk app: Success
+[16:23:02] denylist rm: 
+[16:23:02] done

@@ -79,6 +79,35 @@ Android 16 (API 36) Google APIs x86_64 emulator, `userdebug` image, example app:
 
 The last row is the expected bypass: DenyList removes Magisk's mounts and `su` from the app's process, and a hidden Magisk app has a random package name. That's why integrity checks that matter should be verified on a server.
 
+## OutSystems 11
+
+An O11 Mobile plugin module, **`RottomrootPlugin`**, wraps this plugin. It was built with the Service Studio MCP and checked on a MABS 12 build (see [proof/o11](proof/o11/README.md)).
+
+**Extensibility Configurations.** O11 uses the Cordova-based schema. Service Studio flags it as "deprecated", but the universal `buildConfigurations` schema is ODC-only: an O11 MABS 12 build ignores it and leaves the plugin out.
+
+```json
+{
+    "plugin": {
+        "url": "https://github.com/maspandd/cordova-plugin-rotomroot.git#v0.1.0"
+    }
+}
+```
+
+**Public client actions** follow the Plugin template's conventions: outputs `Success` + `Error`, using `CommonPlugin.Error`.
+
+| Action | Outputs | Notes |
+|---|---|---|
+| `CheckRottomrootPlugin` | `IsAvailable`, `Error` | `window.RotomRoot` is defined in the native app |
+| `IsRooted` | `IsRooted`, `Success`, `Error` | Calls `RotomRoot.isRooted()` |
+| `CheckRoot` | `Report` (`RootReport`), `Success`, `Error` | Calls `RotomRoot.check()`; `Report.Checks` holds the 8 signals |
+
+Error codes: `1` cordova not defined, `2` plugin not loaded (the native build doesn't include it), `3` the native check failed.
+
+**Using it in an app:**
+1. Add a dependency on `RottomrootPlugin` (`CheckRoot`, `RootReport`, `RootChecks`).
+2. Call `CheckRoot` from a screen's **On Ready** or a button, and check `Success` before reading `Report`.
+3. Generate a new native build. Changes to extensibility only take effect in a new build, and consumers marked "outdated" need a refresh and republish first.
+
 ## Development
 
 ```bash
