@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-rotomroot"
+        version="0.1.0">
+
+    <name>RotomRoot</name>
+    <description>Detects whether an Android device is rooted.</description>
+    <license>MIT</license>
+    <keywords>cordova,android,root,root-detection,magisk,security</keywords>
+
+    <engines>
+        <engine name="cordova-android" version=">=12.0.0" />
+    </engines>
+
+    <js-module src="www/rotomroot.js" name="RotomRoot">
+        <clobbers target="RotomRoot" />
+    </js-module>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="RotomRoot">
+                <param name="android-package" value="com.rotomroot.plugin.RotomRoot" />
+            </feature>
+        </config-file>
+
+        <!--
+            Android 11+ package visibility: list each root-management package explicitly
+            instead of requesting QUERY_ALL_PACKAGES (which triggers Play policy review).
+            Keep in sync with RootChecker.ROOT_PACKAGES.
+        -->
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <queries>
+                <package android:name="com.topjohnwu.magisk" />
+                <package android:name="io.github.huskydg.magisk" />
+                <package android:name="io.github.vvb2060.magisk" />
+                <package android:name="me.weishu.kernelsu" />
+                <package android:name="me.bmax.apatch" />
+                <package android:name="eu.chainfire.supersu" />
+                <package android:name="com.noshufou.android.su" />
+                <package android:name="com.noshufou.android.su.elite" />
+                <package android:name="com.koushikdutta.superuser" />
+                <package android:name="com.thirdparty.superuser" />
+                <package android:name="com.yellowes.su" />
+                <package android:name="com.kingroot.kinguser" />
+                <package android:name="com.kingo.root" />
+                <package android:name="com.smedialink.oneclickroot" />
+                <package android:name="com.zhiqupk.root.global" />
+                <package android:name="com.alephzain.framaroot" />
+            </queries>
+        </config-file>
+
+        <source-file src="src/android/RotomRoot.java" target-dir="src/com/rotomroot/plugin" />
+        <source-file src="src/android/RootChecker.java" target-dir="src/com/rotomroot/plugin" />
+    </platform>
+</plugin>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: content:;">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta name="color-scheme" content="light dark">
+        <title>RotomRoot Example</title>
+        <style>
+            body { font-family: system-ui, sans-serif; margin: 0; padding: 24px 16px; }
+            button { font-size: 16px; padding: 12px 20px; }
+            #verdict { font-size: 20px; font-weight: 600; margin: 20px 0 8px; }
+            pre { white-space: pre-wrap; background: rgba(127,127,127,.15); padding: 12px; border-radius: 6px; }
+        </style>
+    </head>
+    <body>
+        <h1>RotomRoot</h1>
+        <button id="run" disabled>Check device</button>
+        <p id="verdict">Waiting for device…</p>
+        <pre id="report"></pre>
+        <script src="cordova.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>

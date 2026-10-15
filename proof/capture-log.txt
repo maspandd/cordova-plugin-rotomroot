@@ -1,0 +1,24 @@
+[14:21:03] === Device ===
+[14:21:04] model=sdk_gphone64_x86_64 sdk=36 type=userdebug tags=dev-keys
+[14:21:04] magisk -v: 30.6:MAGISK:R
+[14:21:05] su -c id: uid=0(root) gid=0(root) groups=0(root) context=u:r:magisk:s0
+[14:21:05] === 1. Magisk app (root installed) ===
+[14:21:12] screenshot -> 01-magisk-installed.png
+[14:21:14] === 2. Rooted, app NOT on DenyList ===
+[14:21:14] denylist rm: 
+[14:21:14] denylist ls: []
+[14:21:40] plugin: RotomRoot report {"isRooted":true,"checks":{"suBinary":true,"suExec":true,"rootApps":true,"rwSystem":false,"magisk":true,"testKeys":false,"dangerousProps":true,"busybox":false}}
+[14:21:44] screenshot -> 02-rooted-detected.png
+[14:21:44] === 3. Rooted, Zygisk + DenyList on the example app ===
+[14:21:44] denylist add: 
+[14:21:45] denylist ls: [com.rotomroot.example|com.rotomroot.example ]
+[14:22:11] plugin: RotomRoot report {"isRooted":true,"checks":{"suBinary":false,"suExec":false,"rootApps":true,"rwSystem":false,"magisk":false,"testKeys":false,"dangerousProps":true,"busybox":false}}
+[14:22:14] screenshot -> 03-denylist-rootapps-only.png
+[14:22:15] === 4. Rooted, DenyList + Magisk app removed (simulates 'Hide the Magisk app') ===
+[14:22:15] pm uninstall com.topjohnwu.magisk: Success
+[14:22:44] plugin: RotomRoot report {"isRooted":false,"checks":{"suBinary":false,"suExec":false,"rootApps":false,"rwSystem":false,"magisk":false,"testKeys":false,"dangerousProps":true,"busybox":false}}
+[14:22:47] screenshot -> 04-denylist-hidden-bypassed.png
+[14:22:47] still rooted? magisk -v: 30.6:MAGISK:R / su -c id: uid=0(root) gid=0(root) groups=0(root) context=u:r:magisk:s0
+[14:22:48] === Restore Magisk app ===
+[14:22:49] install: Success
+[14:22:49] done

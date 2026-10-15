@@ -1,0 +1,52 @@
+{
+  "name": "cordova-plugin-rotomroot",
+  "version": "0.1.0",
+  "description": "Cordova plugin that detects whether an Android device is rooted.",
+  "main": "www/rotomroot.js",
+  "types": "types/index.d.ts",
+  "cordova": {
+    "id": "cordova-plugin-rotomroot",
+    "platforms": [
+      "android"
+    ]
+  },
+  "files": [
+    "plugin.xml",
+    "www/",
+    "src/",
+    "types/",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "jest && npm run test:java",
+    "test:js": "jest",
+    "test:java": "javac --release 11 -d build/test-classes src/android/RootChecker.java tests/java/com/rotomroot/plugin/RootCheckerTest.java && java -cp build/test-classes com.rotomroot.plugin.RootCheckerTest"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova",
+    "root",
+    "rooted",
+    "root-detection",
+    "magisk",
+    "security"
+  ],
+  "engines": {
+    "cordovaDependencies": {
+      "0.1.0": {
+        "cordova-android": ">=12.0.0"
+      }
+    }
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/tests/js"
+    ]
+  }
+}
