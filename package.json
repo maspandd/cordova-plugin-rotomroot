@@ -40,6 +40,15 @@
     }
   },
   "license": "MIT",
+  "author": "maspand",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maspandd/cordova-plugin-rotomroot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maspandd/cordova-plugin-rotomroot/issues"
+  },
+  "homepage": "https://github.com/maspandd/cordova-plugin-rotomroot#readme",
   "devDependencies": {
     "jest": "^29.7.0"
   },
